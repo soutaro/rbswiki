@@ -1,0 +1,50 @@
+module RBSWiki
+  module Actions
+    class Base
+      attr_reader wiki: Wiki
+      attr_reader env: Hash[String, untyped]
+
+      attr_accessor status_code: Integer
+      attr_reader headers: Hash[String, String]
+      attr_reader content: StringIO
+
+      def initialize: (env: Hash[String, String], wiki: Wiki) -> void
+
+      def run: () -> void
+
+      def path: () -> String
+
+      def method: () -> String
+
+      def page_name: () -> String
+    end
+
+    module FormHelper : Base
+      def edit_form: (url: String, content: String) -> String
+    end
+
+    class EditPageAction < Base
+      include FormHelper
+
+      def run: () -> void
+    end
+
+    class ShowPageAction < Base
+      def run: () -> void
+
+      def render_page: () -> String
+    end
+
+    class NewPageAction < Base
+      include FormHelper
+
+      def run: () -> void
+    end
+
+    class UpdatePageAction < Base
+      def run: () -> void
+
+      def post_body: () -> String
+    end
+  end
+end

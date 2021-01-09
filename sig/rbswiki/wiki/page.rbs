@@ -1,0 +1,19 @@
+module RBSWiki
+  class Wiki
+    class Page
+      attr_reader name: String
+      attr_reader content: String
+      @new_page: bool
+
+      def initialize: (name: String, content: String, new_page: bool) -> void
+
+      def new?: () -> bool
+
+      def self.empty: (name: String) -> Page
+
+      def self.load: (name: String, content: String) -> Page
+
+      def update: (content: String) -> Page
+    end
+  end
+end

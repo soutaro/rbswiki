@@ -1,0 +1,16 @@
+module RBSWiki
+  class Wiki
+    @content: Hash[String, String]
+
+    def initialize: () -> void
+
+    def has_page?: (String) -> bool
+
+    def find_page: (String) -> Page?
+
+    def update_page: (String) { (Page) -> Page } -> void
+
+    def each_page: () { (Page) -> void } -> void
+                 | () -> Enumerator[Page, void]
+  end
+end

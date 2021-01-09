@@ -1,0 +1,9 @@
+module RBSWiki
+  class Server
+    include Rack::_App
+
+    attr_reader wiki: Wiki
+
+    def initialize: (wiki: Wiki) -> void
+  end
+end

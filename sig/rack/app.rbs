@@ -1,0 +1,23 @@
+module Rack
+  interface _EachBody
+    def each: () { (String) -> void } -> void
+  end
+
+  interface _PathBody
+    def to_path: () -> String
+  end
+
+  interface _Closable
+    def close: () -> void
+  end
+
+  interface _Header
+    def each: () { ([String, String]) -> void } -> void
+  end
+
+  type body = _EachBody | _EachBody & _Closable | _PathBody | _PathBody & _Closable
+
+  interface _App
+    def call: (Hash[String, untyped]) -> [Integer, _Header, body]
+  end
+end
