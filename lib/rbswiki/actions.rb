@@ -48,6 +48,8 @@ module RBSWiki
     end
 
     class EditPageAction < Base
+      include FormHelper
+
       def run
         page = wiki.find_page(page_name) or raise "Unknown page: #{page_name}"
 
@@ -66,6 +68,8 @@ module RBSWiki
     end
 
     class NewPageAction < Base
+      include FormHelper
+
       def run
         content.print(<<-CONTENT)
 <html>
